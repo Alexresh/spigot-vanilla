@@ -40,3 +40,5 @@ shulkerRespawn:
 villagerInfinityTrading: true
 #shift-rightClick on boat to eject all entities
 boatDismount: true
+#items repair cost will never increase
+zeroRepairCost: true

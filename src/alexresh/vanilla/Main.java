@@ -22,5 +22,7 @@ public class Main extends JavaPlugin  {
             getServer().getPluginManager().registerEvents(new VillagerManager(), this);
         if(config.getBoolean("boatDismount"))
             getServer().getPluginManager().registerEvents(new BoatEject(), this);
+        if(config.getBoolean("zeroRepairCost"))
+            getServer().getPluginManager().registerEvents(new AnvilManager(), this);
     }
 }
