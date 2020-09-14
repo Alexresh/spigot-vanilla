@@ -38,3 +38,5 @@ shulkerRespawn:
   shulkerRespawnChance: 20
 #villager trades will never lock up
 villagerInfinityTrading: true
+#shift-rightClick on boat to eject all entities
+boatDismount: true

@@ -20,5 +20,7 @@ public class Main extends JavaPlugin  {
             getServer().getPluginManager().registerEvents(new ItemMagnet(), this);
         if(config.getBoolean("villagerInfinityTrading"))
             getServer().getPluginManager().registerEvents(new VillagerManager(), this);
+        if(config.getBoolean("boatDismount"))
+            getServer().getPluginManager().registerEvents(new BoatEject(), this);
     }
 }

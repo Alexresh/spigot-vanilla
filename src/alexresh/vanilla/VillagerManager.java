@@ -12,7 +12,7 @@ import java.util.List;
 public class VillagerManager implements Listener {
 
     @EventHandler
-    public void onPlayerShiftRightClickOnVillager(PlayerInteractEntityEvent event){
+    public void onPlayerInteractVillager(PlayerInteractEntityEvent event){
         Entity clickedEntity = event.getRightClicked();
         if(clickedEntity instanceof Villager){
             Villager villager = (Villager) clickedEntity;//get villager entity
