@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,10 +19,11 @@ import java.util.Objects;
 class PortableInventory implements Listener {
 
     private ItemStack craftedItem;
-    private boolean craftingModule, enderChaestModule;
-    PortableInventory(Plugin plugin, boolean craftingModule, boolean enderChaestModule){
+    private final boolean craftingModule;
+    private final boolean enderChestModule;
+    PortableInventory(Plugin plugin, boolean craftingModule, boolean enderChestModule){
         this.craftingModule = craftingModule;
-        this.enderChaestModule = enderChaestModule;
+        this.enderChestModule = enderChestModule;
         if(craftingModule){
             NamespacedKey key = new NamespacedKey(plugin,"portable_crafting_table");
             craftedItem = new ItemStack(Material.CRAFTING_TABLE);
@@ -48,7 +48,7 @@ class PortableInventory implements Listener {
                 player.openWorkbench(null,true);
             }
             if(Objects.equals(event.getItem(), new ItemStack(Material.ENDER_CHEST))){
-                if(!enderChaestModule)
+                if(!enderChestModule)
                     return;
                 player.openInventory(event.getPlayer().getEnderChest());
             }
@@ -65,7 +65,7 @@ class PortableInventory implements Listener {
                 player.openWorkbench(null,true);
             }
             if((Objects.equals(event.getItem(), new ItemStack(Material.ENDER_CHEST)))&&(!player.isSneaking())) {
-                if(!enderChaestModule)
+                if(!enderChestModule)
                     return;
                 event.setCancelled(true);
                 player.openInventory(event.getPlayer().getEnderChest());

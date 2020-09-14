@@ -19,7 +19,7 @@ import java.util.UUID;
 
 public class ShulkerInShulker implements Listener {
 
-    private Map<UUID, Location> shulkerBoxLocations = new HashMap<>();
+    private final Map<UUID, Location> shulkerBoxLocations = new HashMap<>();
 
     @EventHandler
     public void openShulker(InventoryOpenEvent event){
@@ -27,12 +27,15 @@ public class ShulkerInShulker implements Listener {
         if(event.getInventory().getType().equals(InventoryType.SHULKER_BOX)){
             Location shulkerLocation = event.getInventory().getLocation();
             if(!shulkerBoxLocations.containsValue(shulkerLocation)){
-                ShulkerBox shulkerStateMeta = (ShulkerBox) shulkerLocation.getBlock().getState();
-                String title = shulkerStateMeta.getCustomName() == null ? "Shulker Box" : shulkerStateMeta.getCustomName();
-                Inventory inv = Bukkit.createInventory(null, 27, title);
-                inv.setContents(event.getInventory().getContents());
-                player.openInventory(inv);
-                shulkerBoxLocations.put(player.getUniqueId(),event.getInventory().getLocation());
+                if(shulkerLocation !=null)
+                {
+                    ShulkerBox shulkerStateMeta = (ShulkerBox) shulkerLocation.getBlock().getState();
+                    String title = shulkerStateMeta.getCustomName() == null ? "Shulker Box" : shulkerStateMeta.getCustomName();
+                    Inventory inv = Bukkit.createInventory(null, 27, title);
+                    inv.setContents(event.getInventory().getContents());
+                    player.openInventory(inv);
+                    shulkerBoxLocations.put(player.getUniqueId(),event.getInventory().getLocation());
+                }
             }else{
                 event.getPlayer().sendMessage(ChatColor.GRAY+"closed");
             }

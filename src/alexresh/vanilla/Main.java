@@ -12,11 +12,13 @@ public class Main extends JavaPlugin  {
         if(config.getBoolean("shulkerInShulker"))
             getServer().getPluginManager().registerEvents(new ShulkerInShulker(), this);
         getServer().getPluginManager().registerEvents(new NonAggressiveMob(config), this);
-        boolean craftingModule, enderChaestModule;
+        boolean craftingModule, enderChestModule;
         craftingModule = config.getBoolean("portableInventoryModule.portableCraftingTable");
-        enderChaestModule = config.getBoolean("portableInventoryModule.portableEnderChest");
-        getServer().getPluginManager().registerEvents(new PortableInventory(this,craftingModule,enderChaestModule), this);
+        enderChestModule = config.getBoolean("portableInventoryModule.portableEnderChest");
+        getServer().getPluginManager().registerEvents(new PortableInventory(this,craftingModule,enderChestModule), this);
         if(config.getBoolean("itemMagnetModule"))
             getServer().getPluginManager().registerEvents(new ItemMagnet(), this);
+        if(config.getBoolean("villagerInfinityTrading"))
+            getServer().getPluginManager().registerEvents(new VillagerManager(), this);
     }
 }

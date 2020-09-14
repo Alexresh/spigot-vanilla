@@ -3,7 +3,7 @@
 itemMagnetModule: true
 
 #mobs drop heads. Mobs don't target players with their heads. Disable phantoms, bat spawning
-nonAgressiveMobModule:
+nonAggressiveMobModule:
   creeperDropHead:
     #[0,100] default: 2
     chance: 2
@@ -36,3 +36,5 @@ shulkerInShulker: true
 shulkerRespawn:
 #chance to convert enderman [0,100] default: 20
   shulkerRespawnChance: 20
+#villager trades will never lock up
+villagerInfinityTrading: true

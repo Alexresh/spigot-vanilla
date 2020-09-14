@@ -10,16 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/spigot-api-1.16.1-R0.1-20200729.094619-130.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/paper-131.jar!/" />
+          <root url="jar://$MODULE_DIR$/../spigot-api-1.16.3-R0.1-20200910.211721-1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

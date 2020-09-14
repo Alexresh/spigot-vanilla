@@ -12,7 +12,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import java.util.Random;
 
 public class ShulkerRespawn implements Listener {
-    private int chance;
+    private final int chance;
 
     ShulkerRespawn(int chance){
         this.chance = chance;
