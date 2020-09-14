@@ -3,7 +3,7 @@
 itemMagnetModule: true
 
 #mobs drop heads. Mobs don't target players with their heads. Disable phantoms, bat spawning
-nonAggressiveMobModule:
+mobModule:
   creeperDropHead:
     #[0,100] default: 2
     chance: 2
@@ -22,8 +22,8 @@ nonAggressiveMobModule:
   disableBatSpawn: true
   #[false,true] default: true
   mobsDoNotAttackThePlayerWithTheirHead: true
-
-#[false,true] default: true
+  #charged creeper spawn chance [0,100] default: 10
+  chargedCreeperSpawnChance: 10
 portableInventoryModule:
   #craft portable crafting table(stick+workbench) [false,true] default: true
   portableCraftingTable: true
@@ -32,13 +32,13 @@ portableInventoryModule:
 
 #shulker box can be placed in another shulker box [false,true] default: true
 shulkerInShulker: true
-#if enderman spawn in end world on a block *purpur* then he may convert into a shulker [false,true] default: true
-shulkerRespawn:
-#chance to convert enderman [0,100] default: 20
-  shulkerRespawnChance: 20
-#villager trades will never lock up
+#if enderman spawn in end world on a block *purpur* then he may convert into a shulker. chance to convert enderman [0,100] default: 20
+shulkerRespawnChance: 20
+#villager trades will never lock up [false,true] default: true
 villagerInfinityTrading: true
-#shift-rightClick on boat to eject all entities
+#shift-rightClick on boat to eject all entities [false,true] default: true
 boatDismount: true
-#items repair cost will never increase
+#items repair cost will never increase [false,true] default: true
 zeroRepairCost: true
+#book craft without leather(5 papers) [false,true] default: true
+bookWithoutLeather: true
