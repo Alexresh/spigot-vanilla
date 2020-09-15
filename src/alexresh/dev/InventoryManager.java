@@ -1,28 +1,35 @@
-package alexresh.vanilla;
+package alexresh.dev;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.block.ShulkerBox;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import static alexresh.dev.BlockManager.shulkerBoxLocations;
 
-public class ShulkerInShulker implements Listener {
+public class InventoryManager implements Listener {
 
-    private final Map<UUID, Location> shulkerBoxLocations = new HashMap<>();
+    private final FileConfiguration config;
+
+    InventoryManager(FileConfiguration config){
+        this.config = config;
+    }
 
     @EventHandler
     public void openShulker(InventoryOpenEvent event){
+        if(!config.getBoolean("shulkerInShulker"))
+            return;
+
         HumanEntity player = event.getPlayer();
         if(event.getInventory().getType().equals(InventoryType.SHULKER_BOX)){
             Location shulkerLocation = event.getInventory().getLocation();
@@ -44,6 +51,9 @@ public class ShulkerInShulker implements Listener {
     }
     @EventHandler
     public void closeShulker(InventoryCloseEvent event){
+        if(!config.getBoolean("shulkerInShulker"))
+            return;
+
         HumanEntity player = event.getPlayer();
         if (shulkerBoxLocations.containsKey(player.getUniqueId())) {
             ItemStack[] items = event.getInventory().getContents();
@@ -53,12 +63,6 @@ public class ShulkerInShulker implements Listener {
                 shulkerBoxLocations.remove(player.getUniqueId());
                 player.getWorld().playSound(player.getLocation(), Sound.BLOCK_SHULKER_BOX_CLOSE, 1.0F, 1.0F);
             }
-        }
-    }
-    @EventHandler
-    public void manipulateShulker(BlockBreakEvent event){
-        if(shulkerBoxLocations.containsValue(event.getBlock().getLocation())){
-            event.setCancelled(true);
         }
     }
 }

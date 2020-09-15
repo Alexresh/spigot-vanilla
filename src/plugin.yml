@@ -1,9 +1,5 @@
 name: vanilla
-version: 1.2.1
+version: 1.3.0
 author: alexresh
-main: alexresh.vanilla.Main
+main: alexresh.dev.Initial
 api-version: 1.16
-permissions:
-  vanilla.magnet:
-    description: Предметы выпадают сразу в инвентарь
-    default: false

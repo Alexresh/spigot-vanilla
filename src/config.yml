@@ -1,43 +1,34 @@
 
-#if player has permission vanilla.magnet when player break any block, this block automatically placed in their inventory
-itemMagnetModule: true
+# when player break any block, this block automatically placed in their inventory
+itemMagnet: true
 
 #mobs drop heads. Mobs don't target players with their heads. Disable phantoms, bat spawning
-mobModule:
-  creeperDropHead:
-    #[0,100] default: 2
-    chance: 2
-  zombieDropHead:
-    #[0,100] default: 2
-    chance: 2
-  skeletonDropHead:
-    #[0,100] default: 2
-    chance: 2
-  playerDropHead:
-      #[0,100] default: 2
-    chance: 2
-  #[false,true] default: true
-  disablePhantomSpawn: true
-  #[false,true] default: true
-  disableBatSpawn: true
-  #[false,true] default: true
-  mobsDoNotAttackThePlayerWithTheirHead: true
-  #charged creeper spawn chance [0,100] default: 10
-  chargedCreeperSpawnChance: 10
-portableInventoryModule:
-  #craft portable crafting table(stick+workbench) [false,true] default: true
-  portableCraftingTable: true
-  #open ender chest without placing [false,true] default: true
-  portableEnderChest: true
+creeperDropHeadChance: 2
+zombieDropHeadChance: 2
+skeletonDropHeadChance: 2
+playerDropHeadChance: 2
+
+#[false,true] default: true
+disablePhantomSpawn: true
+disableBatSpawn: true
+mobsDoNotAttackThePlayerWithTheirHead: true
+
+#charged creeper spawn chance [0,100] default: 10
+chargedCreeperSpawnChance: 10
+
+#open crafting table without placing [false,true] default: true
+portableCraftingTable: true
+#open ender chest without placing [false,true] default: true
+portableEnderChest: true
 
 #shulker box can be placed in another shulker box [false,true] default: true
 shulkerInShulker: true
 #if enderman spawn in end world on a block *purpur* then he may convert into a shulker. chance to convert enderman [0,100] default: 20
 shulkerRespawnChance: 20
-#villager trades will never lock up [false,true] default: true
+#villager/wandering trader trades will never lock up [false,true] default: true
 villagerInfinityTrading: true
-#shift-rightClick on boat to eject all entities [false,true] default: true
-boatDismount: true
+#shift-rightClick on boat/minecart to eject all entities [false,true] default: true
+boatMinecartDismount: true
 #items repair cost will never increase [false,true] default: true
 zeroRepairCost: true
 #book craft without leather(5 papers) [false,true] default: true
