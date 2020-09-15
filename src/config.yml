@@ -33,3 +33,5 @@ boatMinecartDismount: true
 zeroRepairCost: true
 #book craft without leather(5 papers) [false,true] default: true
 bookWithoutLeather: true
+#shift+right-click on the villager to carry him (shift or sprint to cancel)
+obedientVillage: true

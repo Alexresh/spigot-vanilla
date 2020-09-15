@@ -11,6 +11,8 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Merchant;
 import org.bukkit.inventory.MerchantRecipe;
@@ -28,9 +30,38 @@ public class EntityManager implements Listener {
     }
 
     @EventHandler
+    public void opPlayerToggleSneak(PlayerToggleSneakEvent event){
+        Player player = event.getPlayer();
+        if(!player.isSneaking() && hasVillagerPassenger(player)){
+            player.eject();
+        }
+    }
+    @EventHandler
+    public void opPlayerToggleSprint(PlayerToggleSprintEvent event){
+        Player player = event.getPlayer();
+        if(!player.isSprinting() && hasVillagerPassenger(player)){
+            player.eject();
+        }
+    }
+
+    private boolean hasVillagerPassenger(Player player){
+        if(!player.getPassengers().isEmpty()){
+            return player.getPassengers().stream().anyMatch(passenger -> passenger instanceof Villager);
+        }
+        return false;
+    }
+
+    @EventHandler
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event){
 
         Entity clickedEntity = event.getRightClicked();
+        if(config.getBoolean("obedientVillage") && event.getPlayer().isSneaking()){
+            if(clickedEntity instanceof Villager){
+                Player player = event.getPlayer();
+                player.addPassenger(clickedEntity);
+                return;
+            }
+        }
         if(config.getBoolean("villagerInfinityTrading")) {
             if (clickedEntity instanceof Merchant) {
                 Merchant merchant = (Merchant) clickedEntity;//get villager entity
