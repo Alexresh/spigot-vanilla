@@ -49,6 +49,7 @@ public class InventoryManager implements Listener {
             event.setCancelled(true);
         }
     }
+
     @EventHandler
     public void closeShulker(InventoryCloseEvent event){
         if(!config.getBoolean("shulkerInShulker"))
